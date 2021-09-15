@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3006;
 
 db.connect()
 .catch(err => {
-  console.error(err);
+  console.error('PP', err);
   process.exit(1);
 })
 .then(async client => {
