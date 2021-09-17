@@ -1,3 +1,4 @@
+
 // we need to dynamically split by request types based on the format we're fetching the data
 const groupByRequestType = data => data.reduce(([a, b], currObj) => {
   if (/A/.test(currObj.range)) {
@@ -17,13 +18,13 @@ const groupByModel = (list, requestType) => {
     const [name] = model.values[0];
     const [_a, _b, ...conditions] = model.values[1];
     const [status, _data] = model.values[2];
-    const grades = model.values.slice(1);
+    model.values.splice(0, 2);
     list.push({
       name,
       conditions,
       status,
       type,
-      grades
+      grades: model.values
     });
   });
 

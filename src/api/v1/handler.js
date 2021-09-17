@@ -20,6 +20,6 @@ export default class ApiHandler {
 
     yield AppController.populate(
       formattedData
-    )
+    );
   }
 }
