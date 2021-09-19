@@ -35,9 +35,11 @@ const groupByPriceAndGrade = (list, model) => {
   const { conditions, grades, name, status, type} = model;
   grades.forEach((item) => {
     const [_a, storageSize, ...prices] = item;
-    prices.forEach((price, index) => {
+    prices.forEach((displayPrice, index) => {
+      const price = displayPrice;
       list.push({
         price,
+        displayPrice,
         grade: conditions[index],
         storageSize,
         name,
@@ -46,9 +48,6 @@ const groupByPriceAndGrade = (list, model) => {
       });
     });
   });
-
-  list.push({});
-
   return list;
 };
 

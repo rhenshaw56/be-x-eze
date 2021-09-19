@@ -1,4 +1,9 @@
-import { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
+import { loadType } from 'mongoose-currency';
+
+loadType(mongoose);
+
+const { Schema, model } = mongoose;
 
 const RequestSchema = Schema({
   name: {
@@ -15,6 +20,10 @@ const RequestSchema = Schema({
 		type: String,
 	},
 	price: {
+		type: mongoose.Types.Currency,
+		required: true,
+	},
+	displayPrice: {
 		type: String,
 		required: true,
 	},
@@ -26,7 +35,7 @@ const RequestSchema = Schema({
 { timestamps: true }
 );
 
-RequestSchema.index({ '$**': 'text' });
+RequestSchema.index({ "name": 'text', "storageSize": 'text', "grade": 'text' });
 
 export default {
   BuyRequest: model('buyRequest', RequestSchema),

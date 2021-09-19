@@ -1,11 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import api from './api';
 
 
 export async function createExpressApp() {
   const app = express();
 
+  app.use(cors());
   app.use(bodyParser.json({ limit: '1000mb' }));
   app.use(
     bodyParser.urlencoded({

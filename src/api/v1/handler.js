@@ -6,8 +6,8 @@ export default class ApiHandler {
   constructor() {
     this.googleSheetService = new GoogleSheetService();
   }
-  static async search(req, res, next) {
-    res.json({});
+  static * search(req, res, next) {
+    res.json(yield AppController.search(req, res, next));
   }
 
   static * populate(_req, res, _next) {
