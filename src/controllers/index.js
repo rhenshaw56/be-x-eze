@@ -16,7 +16,7 @@ export default class AppController {
     }
 
     if (maxPrice && minPrice) {
-      filter['item.price'] = { '$lte': Number(maxPrice), '$gte': Number(minPrice) };
+      filter['item.price'] = { '$lte': Number(maxPrice)*100, '$gte': Number(minPrice)*100 };
     }
 
     if (limit && page) {
@@ -142,7 +142,7 @@ export default class AppController {
 
       return {
         products,
-        ...count[0]
+        count: count[0].count
       };
 
     } catch (e) {
