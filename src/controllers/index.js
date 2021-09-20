@@ -141,8 +141,8 @@ export default class AppController {
       );
 
       return {
-        products,
-        count: count[0].count
+        products: products[0] ? products : [],
+        count: count[0] ? count[0].count : 0
       };
 
     } catch (e) {
